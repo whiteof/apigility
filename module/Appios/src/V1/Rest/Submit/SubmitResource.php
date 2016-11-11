@@ -3,20 +3,53 @@ namespace Appios\V1\Rest\Submit;
 
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
+use Appios\V1\Rest\Submit\Entity\Answer;
 
 class SubmitResource extends AbstractResourceListener
 {
+    private $AnswerModel;
+    
+    public function __construct($AnswerModel)
+    {
+        $this->AnswerModel = $AnswerModel;
+    }
+    
     /**
      * Create a resource
      *
      * @param  mixed $data
      * @return ApiProblem|mixed
      */
+    // oauth - jjdgheWSfd45
     public function create($data)
     {
         //return new ApiProblem(405, 'The POST method has not been defined');
-        var_dump($data);
-        die;
+        
+        // save answers
+        foreach($data->answers as $answer) {
+            // check if question field exists
+            if(isset($answer['question'])) {
+                // check if question is not empty
+                if(!empty($answer['question'])) {
+                    // get Question object
+                    $Question = $this->AnswerModel->getQuestionBySlug($answer['question']);
+                    if($Question) {
+                        $Answer = new Answer();
+                        $Answer->setQuestion($Question);
+                        if(!empty($answer['question_option_id'])) $Answer->setAnswer($answer['question_option_id']);
+                        if(!empty($answer['answer'])) $Answer->setAnswer($answer['answer']);
+                        $this->AnswerModel->save($Answer);
+                    }else {
+                        return new ApiProblem(405, 'Question entity does not exist');
+                    }
+                }else {
+                    return new ApiProblem(405, 'Question field is empty');
+                }
+            }else {
+                return new ApiProblem(405, 'Question field does not exist');
+            }
+        }
+        return true;
     }
 
     /**

@@ -1,8 +1,14 @@
 <?php
+
+namespace Appios;
+
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+
 return [
     'service_manager' => [
         'factories' => [
             \Appios\V1\Rest\Submit\SubmitResource::class => \Appios\V1\Rest\Submit\SubmitResourceFactory::class,
+            \Appios\V1\Rest\Submit\Model\AnswerModel::class => \Appios\V1\Rest\Submit\Model\AnswerModelFactory::class,
         ],
     ],
     'router' => [
@@ -124,4 +130,18 @@ return [
             ],
         ],
     ],
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/V1/Rest/Submit/Entity']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\V1\Rest\Submit\Entity' => __NAMESPACE__ . '_driver'
+                ]
+            ]
+        ]
+    ]    
 ];

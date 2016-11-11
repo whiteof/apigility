@@ -1,10 +1,13 @@
 <?php
 namespace Appios\V1\Rest\Submit;
 
+use Appios\V1\Rest\Submit\SubmitResource;
+
 class SubmitResourceFactory
 {
     public function __invoke($services)
     {
-        return new SubmitResource();
+        $AnswerModel = $services->get(\Appios\V1\Rest\Submit\Model\AnswerModel::class);
+        return new SubmitResource($AnswerModel);
     }
 }

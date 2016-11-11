@@ -8,8 +8,10 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
 {
     public static $files = array (
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '742b7e606e92b28dd726e835467f413a' => __DIR__ . '/..' . '/herrera-io/json/src/lib/json_version.php',
         'f0e9d233388e461ee3c460665eb265f0' => __DIR__ . '/..' . '/herrera-io/phar-update/src/lib/constants.php',
+        '34901568a1e26d13dd475cb2c85e0284' => __DIR__ . '/..' . '/zendframework/zend-form/autoload/formElementManagerPolyfill.php',
         '104b083a2f10edc984ea77ef6c221c05' => __DIR__ . '/../..' . '/src/Apigility/constants.php',
     );
 
@@ -33,6 +35,7 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
             'Zend\\InputFilter\\' => 17,
             'Zend\\Hydrator\\' => 14,
             'Zend\\Http\\' => 10,
+            'Zend\\Form\\' => 10,
             'Zend\\Filter\\' => 12,
             'Zend\\EventManager\\' => 18,
             'Zend\\Escaper\\' => 13,
@@ -43,6 +46,7 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
             'Zend\\Config\\' => 12,
             'Zend\\ComponentInstaller\\' => 24,
             'Zend\\Code\\' => 10,
+            'Zend\\Cache\\' => 11,
             'Zend\\Authentication\\' => 20,
             'ZendDeveloperTools\\' => 19,
             'ZF\\Versioning\\' => 14,
@@ -67,7 +71,14 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Debug\\' => 24,
+            'Symfony\\Component\\Console\\' => 26,
             'Seld\\JsonLint\\' => 14,
+        ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
         ),
         'J' => 
         array (
@@ -76,6 +87,13 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
         'I' => 
         array (
             'Interop\\Container\\' => 18,
+        ),
+        'D' => 
+        array (
+            'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
+            'Doctrine\\Common\\' => 16,
         ),
         'A' => 
         array (
@@ -153,6 +171,10 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-http/src',
         ),
+        'Zend\\Form\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-form/src',
+        ),
         'Zend\\Filter\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-filter/src',
@@ -192,6 +214,10 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
         'Zend\\Code\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-code/src',
+        ),
+        'Zend\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-cache/src',
         ),
         'Zend\\Authentication\\' => 
         array (
@@ -277,9 +303,25 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
         array (
             0 => __DIR__ . '/..' . '/zfcampus/zf-api-problem/src',
         ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\Debug\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/debug',
+        ),
+        'Symfony\\Component\\Console\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/console',
+        ),
         'Seld\\JsonLint\\' => 
         array (
             0 => __DIR__ . '/..' . '/seld/jsonlint/src/Seld/JsonLint',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
         'JsonSchema\\' => 
         array (
@@ -288,6 +330,22 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
+        ),
+        'Doctrine\\Instantiator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
+        ),
+        'Doctrine\\Common\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
+        'Doctrine\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
         ),
         'Application\\' => 
         array (
@@ -330,6 +388,37 @@ class ComposerStaticInit3830b5d8c130266e408421b4c38fbdd5
             'Herrera\\Json' => 
             array (
                 0 => __DIR__ . '/..' . '/herrera-io/json/src/lib',
+            ),
+        ),
+        'D' => 
+        array (
+            'Doctrine\\ORM\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/orm/lib',
+            ),
+            'Doctrine\\DBAL\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
+            ),
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
+            'Doctrine\\Common\\Inflector\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
+            ),
+            'Doctrine\\Common\\Collections\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
+            ),
+            'DoctrineORMModule\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/doctrine-orm-module/src',
+            ),
+            'DoctrineModule\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/doctrine-module/src',
             ),
         ),
     );
