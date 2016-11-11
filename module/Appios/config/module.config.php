@@ -10,7 +10,7 @@ return [
             'appios.rest.submit' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/api/appios/submit[/:submit_id]',
+                    'route' => '/api/appios/submit',
                     'defaults' => [
                         'controller' => 'Appios\\V1\\Rest\\Submit\\Controller',
                     ],
@@ -30,12 +30,10 @@ return [
             'route_identifier_name' => 'submit_id',
             'collection_name' => 'submit',
             'entity_http_methods' => [
-                0 => 'GET',
-                1 => 'POST',
+                0 => 'POST',
             ],
             'collection_http_methods' => [
                 0 => 'POST',
-                1 => 'GET',
             ],
             'collection_query_whitelist' => [],
             'page_size' => 25,
@@ -87,12 +85,22 @@ return [
     'input_filter_specs' => [
         'Appios\\V1\\Rest\\Submit\\Validator' => [
             0 => [
-                'required' => false,
+                'required' => true,
                 'validators' => [],
                 'filters' => [],
-                'name' => 'id',
-                'field_type' => 'integer',
-                'continue_if_empty' => true,
+                'name' => 'device_id',
+                'field_type' => 'string',
+                'description' => 'Device ID',
+                'continue_if_empty' => false,
+                'allow_empty' => false,
+            ],
+            1 => [
+                'required' => true,
+                'validators' => [],
+                'filters' => [],
+                'name' => 'answers',
+                'description' => 'Answers array.',
+                'field_type' => 'array',
             ],
         ],
     ],
