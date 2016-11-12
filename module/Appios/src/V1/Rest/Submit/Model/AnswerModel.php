@@ -32,5 +32,10 @@ class AnswerModel
         $Question = $this->EntityManager->getRepository('Appios\V1\Rest\Submit\Entity\Question')->findOneBySlug($slug);
         return $Question;
     }
+
+    public function findAnswerByPatientQuestion($Patient, $Question) {
+        $Answer = $this->EntityManager->getRepository('Appios\V1\Rest\Submit\Entity\Answer')->findOneBy(array('patient' => $Patient, 'question' => $Question));
+        return $Answer;
+    }
     
 }

@@ -52,9 +52,13 @@ class SubmitResource extends AbstractResourceListener
                     // get Question object
                     $Question = $this->AnswerModel->getQuestionBySlug($answer['question']);
                     if($Question) {
-                        $Answer = new Answer();
-                        $Answer->setPatient($Patient);
-                        $Answer->setQuestion($Question);
+                        // check if answer for the question by the user exists
+                        $Answer = $this->AnswerModel->findAnswerByPatientQuestion($Patient, $Question);
+                        if(!$Answer) {
+                            $Answer = new Answer();
+                            $Answer->setPatient($Patient);
+                            $Answer->setQuestion($Question);
+                        }
                         if(!empty($answer['question_option_id'])) $Answer->setAnswer($answer['question_option_id']);
                         if(!empty($answer['answer'])) $Answer->setAnswer($answer['answer']);
                         $this->AnswerModel->save($Answer);
