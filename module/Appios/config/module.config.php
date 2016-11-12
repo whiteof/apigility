@@ -1,9 +1,4 @@
 <?php
-
-namespace Appios;
-
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-
 return [
     'service_manager' => [
         'factories' => [
@@ -37,6 +32,7 @@ return [
             'collection_name' => 'submit',
             'entity_http_methods' => [
                 0 => 'POST',
+                1 => 'GET',
             ],
             'collection_http_methods' => [
                 0 => 'POST',
@@ -51,19 +47,16 @@ return [
     ],
     'zf-content-negotiation' => [
         'controllers' => [
-            'Appios\\V1\\Rest\\Submit\\Controller' => 'HalJson',
+            'Appios\\V1\\Rest\\Submit\\Controller' => 'Json',
         ],
         'accept_whitelist' => [
             'Appios\\V1\\Rest\\Submit\\Controller' => [
-                0 => 'application/vnd.appios.v1+json',
-                1 => 'application/hal+json',
-                2 => 'application/json',
+                0 => 'application/json',
             ],
         ],
         'content_type_whitelist' => [
             'Appios\\V1\\Rest\\Submit\\Controller' => [
-                0 => 'application/vnd.appios.v1+json',
-                1 => 'application/json',
+                0 => 'application/json',
             ],
         ],
     ],
@@ -132,16 +125,18 @@ return [
     ],
     'doctrine' => [
         'driver' => [
-            __NAMESPACE__ . '_driver' => [
-                'class' => AnnotationDriver::class,
+            'Appios_driver' => [
+                'class' => \Doctrine\ORM\Mapping\Driver\AnnotationDriver::class,
                 'cache' => 'array',
-                'paths' => [__DIR__ . '/../src/V1/Rest/Submit/Entity']
+                'paths' => [
+                    0 => __DIR__ . '/../src/V1/Rest/Submit/Entity',
+                ],
             ],
             'orm_default' => [
                 'drivers' => [
-                    __NAMESPACE__ . '\V1\Rest\Submit\Entity' => __NAMESPACE__ . '_driver'
-                ]
-            ]
-        ]
-    ]    
+                    'Appios\\V1\\Rest\\Submit\\Entity' => 'Appios_driver',
+                ],
+            ],
+        ],
+    ],
 ];

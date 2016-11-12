@@ -3,7 +3,7 @@ return [
     'zf-mvc-auth' => [
         'authentication' => [
             'adapters' => [
-                'researchapps' => [
+                'research apps' => [
                     'adapter' => \ZF\MvcAuth\Authentication\OAuth2Adapter::class,
                     'storage' => [
                         'adapter' => \pdo::class,

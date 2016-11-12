@@ -20,11 +20,9 @@ class SubmitResource extends AbstractResourceListener
      * @param  mixed $data
      * @return ApiProblem|mixed
      */
-    // oauth - jjdgheWSfd45
     public function create($data)
     {
         //return new ApiProblem(405, 'The POST method has not been defined');
-        
         // save answers
         foreach($data->answers as $answer) {
             // check if question field exists
@@ -82,11 +80,7 @@ class SubmitResource extends AbstractResourceListener
      */
     public function fetch($id)
     {
-        //return new ApiProblem(405, 'The GET method has not been defined for individual resources');
-        
-        $Submit = new SubmitEntity();
-        $Submit->id = $id;
-        return $Submit;
+        return new ApiProblem(405, 'The GET method has not been defined for individual resources');
     }
 
     /**
