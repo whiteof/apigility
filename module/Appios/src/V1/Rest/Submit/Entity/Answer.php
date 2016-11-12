@@ -49,7 +49,24 @@ class Answer
     {
         return $this->id;
     }
-    
+
+    /**
+     * @param Patient $patient
+     * @return Answer
+     */
+    public function setPatient($patient)
+    {
+        $this->patient = $patient;
+        return $this;
+    }
+    /**
+     * @return Patient
+     */
+    public function getPatient()
+    {
+        return $this->patient;
+    }
+
     /**
      * @param Question $question
      * @return Answer

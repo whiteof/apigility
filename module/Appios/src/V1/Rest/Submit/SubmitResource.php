@@ -28,13 +28,13 @@ class SubmitResource extends AbstractResourceListener
         //return new ApiProblem(405, 'The POST method has not been defined');
 
         // create Patient if device id doesn't exist
-        if(isset($data['device_id'])) {
-            if(!empty($data['device_id'])) {
-                $Patient = $this->PatientModel->getPatientByDeviceId($data['device_id']);
+        if(isset($data->device_id)) {
+            if(!empty($data->device_id)) {
+                $Patient = $this->PatientModel->getPatientByDeviceId($data->device_id);
                 // create new record if Patient does not exist
                 if(!$Patient) {
                     $Patient = new Patient();
-                    $Patient->setDeviceId($data['device_id']);
+                    $Patient->setDeviceId($data->device_id);
                     $this->PatientModel->save($Patient);
                 }
             }else {
@@ -43,7 +43,6 @@ class SubmitResource extends AbstractResourceListener
         }else {
             return new ApiProblem(405, 'Device ID is required');
         }
-
         // save answers
         foreach($data->answers as $answer) {
             // check if question field exists

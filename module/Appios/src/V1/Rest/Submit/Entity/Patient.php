@@ -1,11 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: victoryurkin
- * Date: 11/12/16
- * Time: 11:24 AM
- */
 
+namespace Appios\V1\Rest\Submit\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="patient")
+ */
 class Patient
 {
     /**
