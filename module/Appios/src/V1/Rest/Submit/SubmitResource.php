@@ -4,14 +4,17 @@ namespace Appios\V1\Rest\Submit;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 use Appios\V1\Rest\Submit\Entity\Answer;
+use Appios\V1\Rest\Submit\Entity\Patient;
 
 class SubmitResource extends AbstractResourceListener
 {
     private $AnswerModel;
+    private $PatientModel;
     
-    public function __construct($AnswerModel)
+    public function __construct($AnswerModel, $PatientModel)
     {
         $this->AnswerModel = $AnswerModel;
+        $this->PatientModel = $PatientModel;
     }
     
     /**
@@ -23,6 +26,24 @@ class SubmitResource extends AbstractResourceListener
     public function create($data)
     {
         //return new ApiProblem(405, 'The POST method has not been defined');
+
+        // create Patient if device id doesn't exist
+        if(isset($data['device_id'])) {
+            if(!empty($data['device_id'])) {
+                $Patient = $this->PatientModel->getPatientByDeviceId($data['device_id']);
+                // create new record if Patient does not exist
+                if(!$Patient) {
+                    $Patient = new Patient();
+                    $Patient->setDeviceId($data['device_id']);
+                    $this->PatientModel->save($Patient);
+                }
+            }else {
+                return new ApiProblem(405, 'Device ID can\'t be empty');
+            }
+        }else {
+            return new ApiProblem(405, 'Device ID is required');
+        }
+
         // save answers
         foreach($data->answers as $answer) {
             // check if question field exists
@@ -33,6 +54,7 @@ class SubmitResource extends AbstractResourceListener
                     $Question = $this->AnswerModel->getQuestionBySlug($answer['question']);
                     if($Question) {
                         $Answer = new Answer();
+                        $Answer->setPatient($Patient);
                         $Answer->setQuestion($Question);
                         if(!empty($answer['question_option_id'])) $Answer->setAnswer($answer['question_option_id']);
                         if(!empty($answer['answer'])) $Answer->setAnswer($answer['answer']);

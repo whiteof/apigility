@@ -23,6 +23,10 @@ class Question
      * @ORM\Column(name="title", type="string", nullable=false)
      */        
     private $title;
+    /**
+     * @ORM\OneToMany(targetEntity="Answer", mappedBy="question", fetch="LAZY")
+     **/
+    protected $answers;
     
     /**
      * @return integer
@@ -64,6 +68,23 @@ class Question
     public function getTitle()
     {
         return $this->title;
-    }    
+    }
+
+    /**
+     * @param array $answers
+     * @return Question
+     */
+    public function setAnswers($answers)
+    {
+        $this->answers = $answers;
+        return $this;
+    }
+    /**
+     * @return array
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
     
 }

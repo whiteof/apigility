@@ -16,9 +16,14 @@ class Answer
      */        
     private $id;
     /**
+     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="answers", fetch="LAZY")
+     * @ORM\JoinColumn(name="patient_id", referencedColumnName="id")
+     */    
+    private $patient;
+    /**
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="answers", fetch="LAZY")
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
-     */    
+     */
     private $question;
     /**
      * @ORM\Column(name="question_option_id", type="integer", nullable=false)

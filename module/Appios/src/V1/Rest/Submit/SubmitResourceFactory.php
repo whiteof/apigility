@@ -8,6 +8,7 @@ class SubmitResourceFactory
     public function __invoke($services)
     {
         $AnswerModel = $services->get(\Appios\V1\Rest\Submit\Model\AnswerModel::class);
-        return new SubmitResource($AnswerModel);
+        $PatientModel = $services->get(\Appios\V1\Rest\Submit\Model\PatientModel::class);
+        return new SubmitResource($AnswerModel, $PatientModel);
     }
 }

@@ -4,6 +4,7 @@ return [
         'factories' => [
             \Appios\V1\Rest\Submit\SubmitResource::class => \Appios\V1\Rest\Submit\SubmitResourceFactory::class,
             \Appios\V1\Rest\Submit\Model\AnswerModel::class => \Appios\V1\Rest\Submit\Model\AnswerModelFactory::class,
+            \Appios\V1\Rest\Submit\Model\PatientModel::class => \Appios\V1\Rest\Submit\Model\PatientModelFactory::class,
         ],
     ],
     'router' => [
