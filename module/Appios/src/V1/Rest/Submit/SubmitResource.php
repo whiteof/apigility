@@ -59,7 +59,7 @@ class SubmitResource extends AbstractResourceListener
                             $Answer->setPatient($Patient);
                             $Answer->setQuestion($Question);
                         }
-                        if(!empty($answer['question_option_id'])) $Answer->setAnswer($answer['question_option_id']);
+                        if(!empty($answer['question_option_id'])) $Answer->setQuestionOptionId($answer['question_option_id']);
                         if(!empty($answer['answer'])) $Answer->setAnswer($answer['answer']);
                         $this->AnswerModel->save($Answer);
                     }else {
