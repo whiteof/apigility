@@ -95,10 +95,11 @@ class SubmitResource extends AbstractResourceListener
     public function deleteList($data)
     {
         //return new ApiProblem(405, 'The DELETE method has not been defined for collections');
+        
         // get Patient
-        if(isset($data->device_id)) {
-            if(!empty($data->device_id)) {
-                $Patient = $this->PatientModel->getPatientByDeviceId($data->device_id);
+        if(isset($data['device_id'])) {
+            if(!empty($data['device_id'])) {
+                $Patient = $this->PatientModel->getPatientByDeviceId($data['device_id']);
                 // exit if no patient found
                 if(!$Patient) {
                     return new ApiProblem(405, 'Device ID not found');
