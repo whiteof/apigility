@@ -33,10 +33,11 @@ return [
             'collection_name' => 'submit',
             'entity_http_methods' => [
                 0 => 'POST',
-                1 => 'GET',
+                1 => 'DELETE',
             ],
             'collection_http_methods' => [
                 0 => 'POST',
+                1 => 'DELETE',
             ],
             'collection_query_whitelist' => [],
             'page_size' => 25,
@@ -100,6 +101,24 @@ return [
                 'filters' => [],
                 'name' => 'answers',
                 'description' => 'Answers array.',
+                'field_type' => 'array',
+            ],
+        ],
+        'Appios\\V1\\Rest\\Reset\\Validator' => [
+            0 => [
+                'required' => true,
+                'validators' => [],
+                'filters' => [],
+                'name' => 'device_id',
+                'description' => 'Device unique ID',
+                'field_type' => 'string',
+            ],
+            1 => [
+                'required' => true,
+                'validators' => [],
+                'filters' => [],
+                'name' => 'answers',
+                'description' => 'Answers to reset',
                 'field_type' => 'array',
             ],
         ],

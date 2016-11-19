@@ -83,7 +83,24 @@ class SubmitResource extends AbstractResourceListener
      */
     public function delete($id)
     {
-        return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+        //return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+        // get Patient
+        if(isset($data->device_id)) {
+            if(!empty($data->device_id)) {
+                $Patient = $this->PatientModel->getPatientByDeviceId($data->device_id);
+                // exit if no patient found
+                if(!$Patient) {
+                    return new ApiProblem(405, 'Device ID not found');
+                }
+            }else {
+                return new ApiProblem(405, 'Device ID can\'t be empty');
+            }
+        }else {
+            return new ApiProblem(405, 'Device ID is required');
+        }
+        // delete answers
+        $this->AnswerModel->resetAnswers($Patient);
+        return true;
     }
 
     /**
