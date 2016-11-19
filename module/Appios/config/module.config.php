@@ -96,7 +96,7 @@ return [
                 'allow_empty' => false,
             ],
             1 => [
-                'required' => true,
+                'required' => false,
                 'validators' => [],
                 'filters' => [],
                 'name' => 'answers',
