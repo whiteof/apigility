@@ -83,7 +83,18 @@ class SubmitResource extends AbstractResourceListener
      */
     public function delete($id)
     {
-        //return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+        return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+    }
+
+    /**
+     * Delete a collection, or members of a collection
+     *
+     * @param  mixed $data
+     * @return ApiProblem|mixed
+     */
+    public function deleteList($data)
+    {
+        //return new ApiProblem(405, 'The DELETE method has not been defined for collections');
         // get Patient
         if(isset($data->device_id)) {
             if(!empty($data->device_id)) {
@@ -101,17 +112,6 @@ class SubmitResource extends AbstractResourceListener
         // delete answers
         $this->AnswerModel->resetAnswers($Patient);
         return true;
-    }
-
-    /**
-     * Delete a collection, or members of a collection
-     *
-     * @param  mixed $data
-     * @return ApiProblem|mixed
-     */
-    public function deleteList($data)
-    {
-        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
     }
 
     /**
